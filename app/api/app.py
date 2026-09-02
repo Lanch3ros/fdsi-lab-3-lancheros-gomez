@@ -1,5 +1,5 @@
 """
-CrowdStrike Incident Hub - Prototipo de laboratorio (FDSI Lab 3, Grupo G04).
+CrowdStrike Incident Hub - Prototipo de laboratorio (FDSI Lab 3, Grupos G03+G04).
 
 ADVERTENCIA ACADEMICA
 ---------------------

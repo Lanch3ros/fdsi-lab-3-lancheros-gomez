@@ -1,4 +1,4 @@
-# Inventario publico de demostracion - FDSI Laboratorio 3 - Grupo G04
+# Inventario publico de demostracion - FDSI Laboratorio 3 - Grupos G03+G04
 # DATOS FICTICIOS. Ningun activo, IP o responsable aqui listado es real.
 # Ultima actualizacion: 2026-09-02
 
