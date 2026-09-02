@@ -1,0 +1,8 @@
+# Estacion ofensiva minima. Sustituye a Kali cuando no hay VM asignada:
+# incluye las mismas herramientas que pide la guia (nmap, curl, tcpdump).
+FROM debian:bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      nmap curl tcpdump ca-certificates jq iproute2 dnsutils less \
+ && rm -rf /var/lib/apt/lists/*
+WORKDIR /evidence
+CMD ["sleep","infinity"]

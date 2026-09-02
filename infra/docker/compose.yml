@@ -1,0 +1,56 @@
+# Topologia del Laboratorio 3 en contenedores.
+#   incident-hub-web  -> equivale a "Ubuntu Server + Nginx" (host de la app)
+#   incident-hub-api  -> backend Flask del Incident Hub
+#   redteam           -> equivale a la estacion Kali
+# Red aislada 172.28.0.0/24 = LAB_CIDR autorizado.
+name: fdsi-lab3-g04
+
+services:
+  incident-hub-api:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.api
+    container_name: incident-hub-api
+    environment:
+      HARDENED: "${HARDENED:-0}"
+    networks:
+      lab:
+        ipv4_address: 172.28.0.20
+
+  incident-hub-web:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.web
+    container_name: incident-hub-web
+    depends_on: [incident-hub-api]
+    ports:
+      - "8080:80"          # acceso desde el Mac: http://127.0.0.1:8080
+    volumes:
+      - nginx-logs:/var/log/nginx
+    cap_add: [NET_ADMIN, NET_RAW]   # necesario para tcpdump dentro del host web
+    networks:
+      lab:
+        ipv4_address: 172.28.0.10
+
+  redteam:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.redteam
+    container_name: redteam
+    depends_on: [incident-hub-web]
+    volumes:
+      - ../../evidence:/evidence
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      lab:
+        ipv4_address: 172.28.0.30
+
+volumes:
+  nginx-logs:
+
+networks:
+  lab:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24

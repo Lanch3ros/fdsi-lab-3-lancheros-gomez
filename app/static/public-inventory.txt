@@ -1,0 +1,8 @@
+# Inventario publico de demostracion - FDSI Laboratorio 3 - Grupo G04
+# DATOS FICTICIOS. Ningun activo, IP o responsable aqui listado es real.
+# Ultima actualizacion: 2026-09-02
+
+ASSET_ID     ROL              PLATAFORMA    SEGMENTO_LAB
+WEB-LAB-01   Servidor web     Linux         lab-segment-a
+API-LAB-01   Servicio API     Linux         lab-segment-a
+DB-LAB-01    Base de datos    Linux         lab-segment-b

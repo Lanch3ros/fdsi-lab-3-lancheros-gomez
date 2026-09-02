@@ -36,3 +36,12 @@ mcp-config.json
 
 # Para que las imagenes de pago no se suban al repo
 uploads/
+
+# ── FDSI Lab 3 ──────────────────────────────────────────────────────────────
+# La evidencia del Blue Team (logs y PCAP) es un ENTREGABLE obligatorio del
+# laboratorio, asi que se versiona pese a las reglas genericas de arriba.
+!evidence/
+!evidence/**
+!evidence/**/*.log
+!evidence/**/*.pcap
+!evidence/**/*.zip

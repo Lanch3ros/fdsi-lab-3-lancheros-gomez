@@ -1,0 +1,15 @@
+FROM nginx:1.27
+# Sitio estatico
+COPY app/static/ /var/www/incident-hub/
+# Artefactos que simulan un despliegue descuidado: un .git y un .env olvidados
+# en el webroot. Son el objetivo del Paso 15 (location ~ /\.) y del retest.
+# Contenido 100% ficticio.
+RUN mkdir -p /var/www/incident-hub/.git /var/www/incident-hub/files \
+ && printf '[core]\n\trepositoryformatversion = 0\n[remote "origin"]\n\turl = https://example.invalid/g04/incident-hub.git\n' \
+      > /var/www/incident-hub/.git/config \
+ && printf 'API_MOCK_TOKEN=FICTICIO-no-es-un-secreto-real\nENVIRONMENT=lab\n' \
+      > /var/www/incident-hub/.env \
+ && printf 'Nota interna ficticia del laboratorio.\n' \
+      > /var/www/incident-hub/files/nota-interna.txt
+COPY infra/nginx/incident-hub.baseline.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80

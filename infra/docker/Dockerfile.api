@@ -1,0 +1,8 @@
+FROM python:3.12-slim
+WORKDIR /srv
+RUN pip install --no-cache-dir flask==3.0.3 gunicorn==22.0.0
+COPY app/api/ /srv/
+ENV HARDENED=0
+EXPOSE 8000
+# --access-logfile - envia el log de gunicorn a stdout para el Blue Team
+CMD ["sh","-c","gunicorn --bind 0.0.0.0:8000 --access-logfile - --workers 2 app:app"]
