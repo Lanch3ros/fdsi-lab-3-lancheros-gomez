@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Variables de entorno locales (NUNCA SUBIR AL REPO)
+.env
+
+# Maven
+target/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Claude Code
+.claude/
+.claudelogs/
+claude.json
+
+# Herramientas MCP que generen configs locales
+mcp-config.json
+
+# Para que las imagenes de pago no se suban al repo
+uploads/
