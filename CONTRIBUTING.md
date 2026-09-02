@@ -69,14 +69,24 @@ lab3(threat-model): DFD y tabla STRIDE con cuatro hipotesis
 Sesion conjunta de la Fase B. Cada hipotesis se conecta con las
 debilidades D1-D9 de la linea base.
 
-Co-authored-by: Juan David Gómez Cuellar <correo-de-juan@ejemplo.com>
-Co-authored-by: Jeyder Nicolay León Lancheros <correo-de-jeyder@ejemplo.com>
+Co-authored-by: Juan David Gómez Cuellar <juan.gcuellar@mail.escuelaing.edu.co>
+Co-authored-by: Jeyder Nicolay León Lancheros <jeyder.leon-l@mail.escuelaing.edu.co>
 ```
 
 GitHub muestra a los tres como autores del commit.
 
-> ⚠️ Sustituyan los correos de ejemplo por los reales antes de usarlos. Un correo
-> inventado hace que el trailer no atribuya a nadie.
+### Correos del equipo
+
+| Integrante | Correo para Git |
+|-----------|-----------------|
+| Juan David Gómez Cuellar | `juan.gcuellar@mail.escuelaing.edu.co` |
+| Jeyder Nicolay León Lancheros | `jeyder.leon-l@mail.escuelaing.edu.co` |
+| José Luis Lancheros Ayora | _(el asociado a su cuenta de GitHub)_ |
+
+> ⚠️ Cada integrante debe tener este correo verificado en
+> <https://github.com/settings/emails>. Si el correo del commit no está asociado
+> a la cuenta, el commit aparece en el historial pero **no** se atribuye al perfil
+> ni cuenta en la pestaña *Contributors*.
 
 ## 5. Antes de entregar
 

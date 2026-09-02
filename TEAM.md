@@ -30,8 +30,13 @@ Ese registro presenta dos inconsistencias que documentamos de forma explícita:
 2. **A E11 se le asignan dos roles incompatibles** en el mismo laboratorio y sobre
    el mismo repositorio: Red Team en G03 y Blue Team en G04.
 
-Con el visto bueno del docente, el equipo trabaja como **una sola unidad de tres
-integrantes**. Para resolver la contradicción de roles se aplicó el reparto de la
+El docente fue consultado sobre ambos puntos y **confirmó que no es necesario
+modificar el archivo de selección**: el equipo trabaja como **una sola unidad de
+tres integrantes** sobre este repositorio. Este documento deja constancia de la
+interpretación aplicada, de modo que la revisión pueda atribuir cada evidencia a
+su responsable sin ambigüedad.
+
+Para resolver la contradicción de roles se aplicó el reparto de la
 tabla anterior, que utiliza los **cuatro roles definidos en la §4 de la guía**
 (Product/Builder, Red Team, Blue Team, Security Lead/Relator) en lugar de forzar
 únicamente la dupla Red/Blue. De ese modo:
