@@ -22,6 +22,8 @@ services:
       context: ../..
       dockerfile: infra/docker/Dockerfile.web
     container_name: incident-hub-web
+    environment:
+      HARDENED: "${HARDENED:-0}"
     depends_on: [incident-hub-api]
     ports:
       - "8080:80"          # acceso desde el Mac: http://127.0.0.1:8080

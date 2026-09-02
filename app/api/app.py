@@ -54,17 +54,50 @@ def utcnow():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def client_ip_declarado():
+    """Origen tal como lo declara el cliente.
+
+    NO es confiable: X-Forwarded-For es una cabecera que el propio emisor puede
+    fijar. Nginx la concatena con $proxy_add_x_forwarded_for, asi que el primer
+    valor de la lista es exactamente lo que el cliente quiso poner.
+    """
+    xff = request.headers.get("X-Forwarded-For")
+    if xff:
+        return xff.split(",")[0].strip()
+    return request.remote_addr
+
+
+def client_ip_observado():
+    """Origen observado por el proxy.
+
+    La configuracion endurecida fija X-Real-IP con $remote_addr, un valor que el
+    cliente no puede alterar. Si la cabecera no viene, se usa el peer directo.
+    """
+    return request.headers.get("X-Real-IP") or request.remote_addr
+
+
 def record(action, detail):
-    entry = {"action": action, "detail": detail}
     if HARDENED:
-        entry.update(
-            {
-                "ts_utc": utcnow(),
-                "correlation_id": g.get("correlation_id"),
-                "src_ip": request.headers.get("X-Forwarded-For", request.remote_addr),
-                "user_agent": request.headers.get("User-Agent", "-"),
-            }
-        )
+        # Trazabilidad suficiente: hora, correlacion, origen observado por el
+        # proxy y, por separado, el origen que el cliente declaro. La diferencia
+        # entre ambos es en si misma una senal de deteccion.
+        entry = {
+            "ts_utc": utcnow(),
+            "correlation_id": g.get("correlation_id"),
+            "action": action,
+            "detail": detail,
+            "src_ip": client_ip_observado(),
+            "xff_declarado": request.headers.get("X-Forwarded-For", "-"),
+            "user_agent": request.headers.get("User-Agent", "-"),
+        }
+    else:
+        # Linea base: no hay hora ni identificador de correlacion, y el unico
+        # campo de atribucion proviene de una cabecera que el cliente controla.
+        entry = {
+            "action": action,
+            "detail": detail,
+            "src_ip": client_ip_declarado(),
+        }
     AUDIT_LOG.append(entry)
     audit_logger.info(json.dumps(entry))
     return entry
@@ -145,9 +178,11 @@ def aggregates():
 def audit():
     """Registro de acciones.
 
-    Sin hardening este endpoint es publico y anonimo: cualquiera puede leer el
-    historial de consultas del SOC (Information Disclosure) y las entradas no
-    permiten atribuir quien hizo cada accion (Repudiation).
+    Sin hardening este endpoint es publico: cualquiera puede leer el historial de
+    consultas del SOC (Information Disclosure). Ademas las entradas no llevan hora
+    ni identificador de correlacion, por lo que no se pueden ordenar ni cruzar con
+    access.log (Repudiation), y su unico campo de origen proviene de una cabecera
+    que el cliente controla (Spoofing).
     """
     if HARDENED:
         # El detalle de auditoria deja de ser publico; queda en el log del host.
