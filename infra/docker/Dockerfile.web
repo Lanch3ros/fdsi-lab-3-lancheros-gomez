@@ -1,4 +1,9 @@
 FROM nginx:1.27
+# tcpdump: el Blue Team (Paso 11) captura trafico EN el host de la app, que
+# en esta topologia es este contenedor. Se instala aqui, no en la estacion
+# ofensiva, porque el puente Docker aisla el trafico entre contenedores.
+RUN apt-get update && apt-get install -y --no-install-recommends tcpdump \
+ && rm -rf /var/lib/apt/lists/*
 # Sitio estatico
 COPY app/static/ /var/www/incident-hub/
 # Artefactos que simulan un despliegue descuidado: un .git y un .env olvidados
