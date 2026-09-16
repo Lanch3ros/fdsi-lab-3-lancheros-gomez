@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Wed, 16 Sep 2026 21:27:22 GMT
+Content-Type: application/json
+Content-Length: 617
+Connection: keep-alive
+X-Powered-By: incident-hub/0.1.0-lab3 (Flask)
+Access-Control-Allow-Origin: *
+
+{"resources":[{"assigned_to":"prueba_red_team","cmdline":"/usr/bin/mock-dump --target lsass","composite_id":"ldt:mock:0001","confidence":95,"created_timestamp":"2026-09-02T12:04:11Z","device":{"agent_version":"7.14.0-mock","hostname":"WEB-LAB-01","local_ip":"10.10.10.11","platform_name":"Linux"},"filename":"mimidump.mock","notes":"Alerta sintetica de laboratorio.","severity":90,"severity_name":"Critical","sha256":"0000000000000000000000000000000000000000000000000000000000000001","status":"closed","tactic":"Credential Access","technique":"OS Credential Dumping","technique_id":"T1003","user_name":"svc_lab_a"}]}
+{"composite_id":"ldt:mock:0001","assigned_to":"prueba_red_team","status":"closed"}

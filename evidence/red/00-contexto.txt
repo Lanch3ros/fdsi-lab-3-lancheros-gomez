@@ -1,0 +1,7 @@
+# Evidencia Red Team - FDSI Lab 3 - Grupos G03+G04
+Responsable : Juan David Gomez Cuellar (Red Team)
+Inicio (UTC): 2026-09-16T21:27:16Z
+Objetivo    : http://172.28.0.10  (172.28.0.10)
+Alcance     : puerto 80/TCP unicamente, dentro de LAB_CIDR 172.28.0.0/24
+Origen      : estacion redteam 172.28.0.30
+Reglas      : solo lectura; sin DoS, fuerza bruta ni explotacion destructiva

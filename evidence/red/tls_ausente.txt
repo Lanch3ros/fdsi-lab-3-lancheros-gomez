@@ -1,0 +1,1 @@
+Sin Strict-Transport-Security ni Content-Security-Policy. Servicio 100% HTTP.

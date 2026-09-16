@@ -1,0 +1,10 @@
+GET /.git/config -> HTTP 200
+GET /.env -> HTTP 200
+GET /.git/config -> HTTP 200
+GET /.env -> HTTP 200
+GET /.git/config -> HTTP 200
+GET /.env -> HTTP 200
+GET /.git/config -> HTTP 200
+GET /.env -> HTTP 200
+GET /.git/config -> HTTP 200
+GET /.env -> HTTP 200

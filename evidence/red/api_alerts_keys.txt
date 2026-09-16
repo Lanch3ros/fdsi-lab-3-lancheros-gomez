@@ -1,0 +1,16 @@
+assigned_to
+cmdline
+composite_id
+confidence
+created_timestamp
+device
+filename
+notes
+severity
+severity_name
+sha256
+status
+tactic
+technique
+technique_id
+user_name

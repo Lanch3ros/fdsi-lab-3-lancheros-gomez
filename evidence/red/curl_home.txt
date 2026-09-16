@@ -1,0 +1,62 @@
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Wed, 16 Sep 2026 21:27:22 GMT
+Content-Type: text/html
+Content-Length: 2264
+Last-Modified: Wed, 02 Sep 2026 23:18:46 GMT
+Connection: keep-alive
+ETag: "6a98aed6-8d8"
+Accept-Ranges: bytes
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrowdStrike Incident Hub - LAB</title>
+  <style>
+    body{font-family:system-ui,-apple-system,sans-serif;max-width:52rem;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#1a1a1a}
+    header{border-bottom:2px solid #c00;padding-bottom:.75rem;margin-bottom:1.5rem}
+    .warn{background:#fff4e5;border-left:4px solid #e08600;padding:.75rem 1rem;margin:1rem 0}
+    table{border-collapse:collapse;width:100%;margin:1rem 0}
+    th,td{border:1px solid #ddd;padding:.45rem .6rem;text-align:left;font-size:.92rem}
+    th{background:#f4f4f4}
+    code{background:#f0f0f0;padding:.1rem .3rem;border-radius:3px;font-size:.9em}
+  </style>
+</head>
+<body>
+<header>
+  <h1>CrowdStrike Incident Hub</h1>
+  <p><strong>Environment:</strong> LAB &middot; <strong>Owner:</strong> Grupos G03+G04 &middot; <strong>Lab:</strong> FDSI 3</p>
+</header>
+
+<div class="warn">
+  <strong>Prototipo academico.</strong> Todos los datos son ficticios. No hay integracion con
+  CrowdStrike Falcon ni con ningun entorno real. Servicio publicado por HTTP y sin
+  autenticacion de forma intencional, como linea base del Laboratorio 3.
+</div>
+
+<h2>Endpoints publicos</h2>
+<table>
+  <tr><th>Metodo</th><th>Ruta</th><th>Descripcion</th></tr>
+  <tr><td>GET</td><td><a href="/api/v1/health">/api/v1/health</a></td><td>Estado del servicio</td></tr>
+  <tr><td>GET</td><td><a href="/api/v1/alerts">/api/v1/alerts</a></td><td>Listado de alertas ficticias</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/alerts/{composite_id}</code></td><td>Detalle de una alerta</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/alerts/aggregates</code></td><td>Agregacion por campo</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/alerts/{composite_id}/assign</code></td><td>Asignar analista</td></tr>
+</table>
+
+<h2>Recursos</h2>
+<ul>
+  <li><a href="/public-inventory.txt">Inventario publico de demostracion</a></li>
+</ul>
+
+<hr>
+<p style="font-size:.85rem;color:#666">
+  Integrantes: Juan David Gomez Cuellar (Red Team) &middot;
+  Jeyder Nicolay Leon Lancheros (Blue Team) &middot;
+  Jose Luis Lancheros Ayora (Builder / Security Lead).
+  Uso academico autorizado.
+</p>
+</body>
+</html>

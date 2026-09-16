@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Wed, 16 Sep 2026 21:27:22 GMT
+Content-Type: application/json
+Content-Length: 3279
+Connection: keep-alive
+X-Powered-By: incident-hub/0.1.0-lab3 (Flask)
+Access-Control-Allow-Origin: *
+

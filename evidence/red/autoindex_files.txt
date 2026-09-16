@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Wed, 16 Sep 2026 21:27:22 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+<html>
+<head><title>Index of /files/</title></head>
+<body>
+<h1>Index of /files/</h1><hr><pre><a href="../">../</a>
+<a href="nota-interna.txt">nota-interna.txt</a>                                   16-Sep-2026 21:22                  39
+</pre><hr></body>
+</html>
