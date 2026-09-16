@@ -1,0 +1,12 @@
+assigned_to
+composite_id
+confidence
+created_timestamp
+device
+notes
+severity
+severity_name
+status
+tactic
+technique
+technique_id

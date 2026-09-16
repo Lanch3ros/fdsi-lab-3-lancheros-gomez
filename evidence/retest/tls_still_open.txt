@@ -1,0 +1,1 @@
+Sin HSTS: HTTP sigue siendo el transporte (riesgo trasladado a Lab 4)

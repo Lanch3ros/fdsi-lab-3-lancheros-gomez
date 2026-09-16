@@ -1,0 +1,2 @@
+GET /.git/config -> 404
+GET /.env -> 404
