@@ -1,0 +1,1 @@
+2026/09/16 21:27:11 [error] 30#30: *41 connect() failed (111: Connection refused) while connecting to upstream, client: 172.28.0.1, server: _, request: "GET /api/v1/health HTTP/1.1", upstream: "http://172.28.0.20:8000/api/v1/health", host: "127.0.0.1:8080"

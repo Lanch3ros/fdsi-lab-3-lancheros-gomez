@@ -1,0 +1,30 @@
+== Deteccion sobre evidence/blue/access.log ==
+
+-- Top rutas 404 por IP (posible enumeracion) --
+   1 172.28.0.30 /wp-login.php
+   1 172.28.0.30 /server-status
+   1 172.28.0.30 /sdk
+   1 172.28.0.30 /robots.txt
+   1 172.28.0.30 /phpinfo.php
+   1 172.28.0.30 /old
+   1 172.28.0.30 /nmaplowercheck1789594042
+   1 172.28.0.30 /login
+   1 172.28.0.30 /index.bak
+   1 172.28.0.30 /evox/about
+
+-- Conteo de 404 por IP --
+16 404 desde 172.28.0.30  <== SUPERA UMBRAL (>=5)
+
+-- Distribucion de codigos de estado --
+  23 200
+  16 404
+   1 502
+
+-- Accesos a rutas sensibles (H5/H6/H7) --
+172.28.0.30 GET /.git/config 200
+172.28.0.30 GET /.git/config 200
+172.28.0.30 GET /.env 200
+172.28.0.30 GET /.env 200
+172.28.0.30 GET /files/ 200
+172.28.0.30 GET /api/v1/debug 200
+172.28.0.30 GET /api/v1/debug 200
