@@ -1,0 +1,16 @@
+FOLLOW HTTP STREAM (extracto legible del PCAP, estado LINEA BASE)
+================================================================
+Fuente : evidence/blue/wireshark-demo.pcap  (tcp.stream, GET /api/v1/alerts)
+Prueba : el contenido viaja EN CLARO por HTTP -> hallazgo H1 (Information Disclosure)
+
+--- lo que se lee sin descifrar nada ---
+GET /api/v1/alerts/ldt:mock:0001 HTTP/1.1
+.D...m.HGET /api/v1/alerts/ldt:mock:0001 HTTP/1.1
+Host: 172.28.0.10
+User-Agent: curl/7.88.1
+23:16:11.902585 eth0  Out IP ffbcf9d444e3.80 > redteam.fdsi-lab3-g04_lab.45038: Flags [P.], seq 1:836, ack 103, win 509, options [nop,nop,TS val 107809616 ecr 3057967320], length 835: HTTP: HTTP/1.1 200 OK
+.m.P.D..HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Content-Type: application/json
+X-Powered-By: incident-hub/0.1.0-lab3 (Flask)
+{"resources":[{"assigned_to":null,"cmdline":"/usr/bin/mock-dump --target lsass","composite_id":"ldt:mock:0001","confidence":95,"created_timestamp":"2026-09-02T12:04:11Z","device":{"agent_version":"7.14.0-mock","hostname":"WEB-LAB-01","local_ip":"10.10.10.11","platform_name":"Linux"},"filename":"mimidump.mock","notes":"Alerta sintetica de laboratorio.","severity":90,"severity_name":"Critical","sha256":"0000000000000000000000000000000000000000000000000000000000000001","status":"new","tactic":"Credential Access","technique":"OS Credential Dumping","technique_id":"T1003","user_name":"svc_lab_a"}]}

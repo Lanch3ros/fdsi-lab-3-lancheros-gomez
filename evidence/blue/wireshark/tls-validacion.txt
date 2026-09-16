@@ -1,0 +1,24 @@
+VALIDACION DE LA MITIGACION TLS EN WIRESHARK
+============================================
+Grupos G03+G04 - Capa de mitigacion (Fase 2) - amenaza objetivo: H1/H4/D6
+
+Misma peticion (GET /api/v1/alerts/ldt:mock:0001) en dos estados:
+
+ESTADO ANTES  (HTTP, linea base)  -> evidence/blue/wireshark/wireshark-demo.pcap
+  Follow HTTP Stream muestra en CLARO:
+    GET /api/v1/alerts/ldt:mock:0001 HTTP/1.1
+    HTTP/1.1 200 OK ... Server: nginx/1.27.5
+    {"resources":[{... "user_name":"svc_lab_a", "cmdline":"/usr/bin/mock-dump
+     --target lsass", "sha256":"...0001", "hostname":"WEB-LAB-01" ...}]}
+  -> cualquiera en la red lee el contenido completo (Information Disclosure).
+
+ESTADO DESPUES (HTTPS/TLS, mitigado) -> evidence/blue/wireshark/tls-mitigado.pcap
+  El PCAP contiene un handshake TLS y "Application Data" cifrado.
+  Busqueda de datos sensibles en claro (svc_lab / composite_id / mimidump):
+    -> 0 ocurrencias.
+  HTTP :80 responde 301 y redirige a https://.../   (no sirve contenido en claro)
+  HTTPS :443 responde 200.
+
+CONCLUSION: la mitigacion de transporte (TLS) elimina la fuga de contenido en
+transito. En Wireshark, "Follow HTTP Stream" ya no aplica sobre el flujo 443;
+se ve TLSv1.2/1.3 y datos cifrados en lugar del JSON. Amenaza H1/H4 -> MITIGADA.
