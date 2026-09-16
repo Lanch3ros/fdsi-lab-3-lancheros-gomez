@@ -128,3 +128,55 @@ Accept-Ranges: bytes
 
 API_MOCK_TOKEN=FICTICIO-no-es-un-secreto-real
 ENVIRONMENT=lab
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Wed, 16 Sep 2026 21:57:05 GMT
+Content-Type: application/octet-stream
+Content-Length: 106
+Last-Modified: Wed, 16 Sep 2026 21:22:30 GMT
+Connection: keep-alive
+ETag: "6aab0896-6a"
+Accept-Ranges: bytes
+
+[core]
+	repositoryformatversion = 0
+[remote "origin"]
+	url = https://example.invalid/g04/incident-hub.git
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Wed, 16 Sep 2026 21:57:05 GMT
+Content-Type: application/octet-stream
+Content-Length: 62
+Last-Modified: Wed, 16 Sep 2026 21:22:30 GMT
+Connection: keep-alive
+ETag: "6aab0896-3e"
+Accept-Ranges: bytes
+
+API_MOCK_TOKEN=FICTICIO-no-es-un-secreto-real
+ENVIRONMENT=lab
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Wed, 16 Sep 2026 22:01:13 GMT
+Content-Type: application/octet-stream
+Content-Length: 106
+Last-Modified: Wed, 16 Sep 2026 21:22:30 GMT
+Connection: keep-alive
+ETag: "6aab0896-6a"
+Accept-Ranges: bytes
+
+[core]
+	repositoryformatversion = 0
+[remote "origin"]
+	url = https://example.invalid/g04/incident-hub.git
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Wed, 16 Sep 2026 22:01:13 GMT
+Content-Type: application/octet-stream
+Content-Length: 62
+Last-Modified: Wed, 16 Sep 2026 21:22:30 GMT
+Connection: keep-alive
+ETag: "6aab0896-3e"
+Accept-Ranges: bytes
+
+API_MOCK_TOKEN=FICTICIO-no-es-un-secreto-real
+ENVIRONMENT=lab
