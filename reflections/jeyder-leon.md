@@ -4,25 +4,26 @@
 **Grupo:** G03+G04 · **Temática:** CrowdStrike Incident Hub
 **Fecha:** _(completar)_
 
-> Límite: **250 palabras**. La guía (§8) evalúa la validación humana, no la
-> extensión. Escribe en primera persona y apóyate en la evidencia que TÚ generaste.
+> ⚠️ BORRADOR para personalizar. Reescríbelo con tus propias palabras: la guía
+> (§8) califica la validación humana, no el texto generado. Borra este aviso y
+> ajusta el conteo a ≤250 palabras.
 
-<!--
-Guía para escribir (borra estos comentarios al terminar). Responde en prosa,
-no como lista de preguntas:
-
-1. ¿Qué hiciste concretamente y con qué evidencia lo respaldas?
-   (cita el archivo, p. ej. evidence/red/curl_headers.txt)
-2. ¿Qué te sorprendió de lo que pudo observarse SIN explotar nada?
-3. ¿Qué control aplicaron que reduce exposición pero NO resuelve el riesgo
-   de fondo de HTTP? ¿Por qué no lo resuelve?
-4. ¿Qué amenaza STRIDE priorizarías para el Laboratorio 4 y por qué?
-5. Si usaste IA: ¿qué afirmación suya NO pudiste comprobar contra un comando,
-   log o captura? (§7 exige marcar las alucinaciones detectadas)
--->
-
-_(Escribe aquí tu reflexión.)_
+Desde el Blue Team entendí la diferencia entre ver la red y ver la aplicación.
+Con `tcpdump` capturé el tráfico del ejercicio y, al leer el PCAP, encontré el
+JSON de alertas completamente legible: `composite_id` y los usuarios
+`svc_lab_a/b/c` aparecían en claro (`evidence/blue/pcap-lectura-ascii.txt`). Eso
+me demostró por qué HTTP no ofrece confidencialidad. En `access.log` correlacioné
+las acciones del Red Team con sus horas y construí una regla de detección: cinco
+o más respuestas 404 desde una misma IP en cinco minutos. Disparó con 16 errores
+404 desde `172.28.0.30`. Lo interesante fue reconocer sus límites: un usuario que
+teclea mal una URL también genera 404, y la fuga de `/.git/config` devolvía 200,
+así que esa regla sola no la habría detectado. Lo que más me marcó fue el caso de
+la IP falsificada: la auditoría de la aplicación se creyó el `X-Forwarded-For`,
+pero `access.log` conservó la IP real, y esa discrepancia entre ambas fuentes es
+lo que permite detectar el engaño. Comprobé también que el escaneo `nmap` no
+aparecía en `access.log`, porque opera a nivel TCP y Nginx solo registra
+peticiones HTTP completas. Para el Lab 4 priorizaría el Spoofing: sin identidad
+real, la atribución siempre dependerá de datos que el cliente puede manipular.
 
 ---
-
 **Conteo de palabras:** _(completar — máximo 250)_

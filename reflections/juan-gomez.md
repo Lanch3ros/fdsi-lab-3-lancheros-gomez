@@ -4,25 +4,27 @@
 **Grupo:** G03+G04 · **Temática:** CrowdStrike Incident Hub
 **Fecha:** _(completar)_
 
-> Límite: **250 palabras**. La guía (§8) evalúa la validación humana, no la
-> extensión. Escribe en primera persona y apóyate en la evidencia que TÚ generaste.
+> ⚠️ BORRADOR para personalizar. Reescríbelo con tus propias palabras: la guía
+> (§8) califica la validación humana, no el texto generado. Borra este aviso y
+> ajusta el conteo a ≤250 palabras.
 
-<!--
-Guía para escribir (borra estos comentarios al terminar). Responde en prosa,
-no como lista de preguntas:
-
-1. ¿Qué hiciste concretamente y con qué evidencia lo respaldas?
-   (cita el archivo, p. ej. evidence/red/curl_headers.txt)
-2. ¿Qué te sorprendió de lo que pudo observarse SIN explotar nada?
-3. ¿Qué control aplicaron que reduce exposición pero NO resuelve el riesgo
-   de fondo de HTTP? ¿Por qué no lo resuelve?
-4. ¿Qué amenaza STRIDE priorizarías para el Laboratorio 4 y por qué?
-5. Si usaste IA: ¿qué afirmación suya NO pudiste comprobar contra un comando,
-   log o captura? (§7 exige marcar las alucinaciones detectadas)
--->
-
-_(Escribe aquí tu reflexión.)_
+Como Red Team confirmé, sin explotar nada, cuánto revela un servicio HTTP sin
+autenticación. Con `nmap -sV` y `curl` identifiqué la versión de Nginx y de la
+API (`evidence/red/curl_headers_api.txt`), descargué `/.git/config` y `/.env`
+(200 OK) y leí el entorno del proceso en `/api/v1/debug`. Lo que más me
+sorprendió fue que el simple listado de alertas entregaba `cmdline`, `user_name`
+y `sha256`: información sensible que ninguna vista de triage necesita. También
+comprobé que un `POST /assign` cambia el estado de una alerta sin pedir
+credenciales, y que enviando `X-Forwarded-For: 203.0.113.99` la auditoría de la
+aplicación registraba una IP falsa. El control que aplicamos y que reduce
+exposición pero no resuelve el problema de fondo fue el hardening de cabeceras y
+`server_tokens off`: el tráfico sigue viajando en claro, así que la
+confidencialidad depende todavía de pasar a HTTPS en el Lab 4. Usé IA para
+ordenar la narrativa de los hallazgos, pero descarté dos afirmaciones suyas —un
+supuesto CVE y un webshell— porque no pude comprobarlas contra ninguna evidencia.
+La amenaza que priorizaría para el Lab 4 es la ausencia de identidad
+(Spoofing/Elevation of Privilege): mientras cualquiera pueda cerrar un incidente
+sin autenticarse, el resto de controles es secundario.
 
 ---
-
 **Conteo de palabras:** _(completar — máximo 250)_
