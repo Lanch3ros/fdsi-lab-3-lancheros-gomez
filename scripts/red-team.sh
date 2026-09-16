@@ -56,7 +56,7 @@ curl -s "$TARGET_URL/api/v1/alerts" \
 # --- H5: rutas ocultas desplegadas por error ---------------------------------
 banner "H5 - Rutas ocultas (.git, .env)"
 for path in ".git/config" ".env"; do
-  code=$(curl -s -o "$OUT/hidden_${path%%/*}.body" -w '%{http_code}' "$TARGET_URL/$path")
+  code=$(curl -s -o /dev/null -w '%{http_code}' "$TARGET_URL/$path")
   log "GET /$path -> HTTP $code"
   echo "GET /$path -> HTTP $code" >> "$OUT/hidden_paths.txt"
   curl -si "$TARGET_URL/$path" >> "$OUT/hidden_paths_full.txt"

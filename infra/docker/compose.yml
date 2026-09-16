@@ -24,9 +24,11 @@ services:
     container_name: incident-hub-web
     environment:
       HARDENED: "${HARDENED:-0}"
+      TLS: "${TLS:-0}"
     depends_on: [incident-hub-api]
     ports:
-      - "8080:80"          # acceso desde el Mac: http://127.0.0.1:8080
+      - "8080:80"          # acceso HTTP:  http://127.0.0.1:8080
+      - "8443:443"         # acceso HTTPS: https://127.0.0.1:8443 (con TLS=1)
     volumes:
       - nginx-logs:/var/log/nginx
     cap_add: [NET_ADMIN, NET_RAW]   # necesario para tcpdump dentro del host web

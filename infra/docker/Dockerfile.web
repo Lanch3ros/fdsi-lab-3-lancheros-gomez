@@ -19,6 +19,15 @@ RUN mkdir -p /var/www/incident-hub/.git /var/www/incident-hub/files \
 # Ambas configuraciones viajan en la imagen; el entrypoint elige segun HARDENED.
 COPY infra/nginx/incident-hub.baseline.conf /etc/nginx/lab-configs/baseline.conf
 COPY infra/nginx/incident-hub.hardened.conf /etc/nginx/lab-configs/hardened.conf
+COPY infra/nginx/incident-hub.mitigado-tls.conf /etc/nginx/lab-configs/mitigado-tls.conf
+# M-TLS: certificado autofirmado del laboratorio, generado en el build. Es
+# ficticio y solo sirve para cifrar el transporte del prototipo; un CA real es
+# materia posterior. CN=incident-hub.lab.
+RUN mkdir -p /etc/nginx/certs \
+ && openssl req -x509 -nodes -newkey rsa:2048 -days 365 \
+      -keyout /etc/nginx/certs/incident-hub.key \
+      -out /etc/nginx/certs/incident-hub.crt \
+      -subj "/C=CO/O=FDSI-Lab3-G03G04/CN=incident-hub.lab" 2>/dev/null
 COPY infra/docker/web-entrypoint.sh /docker-entrypoint.d/00-lab3-select-config.sh
 RUN chmod +x /docker-entrypoint.d/00-lab3-select-config.sh
-EXPOSE 80
+EXPOSE 80 443

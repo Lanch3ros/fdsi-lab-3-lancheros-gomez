@@ -5,7 +5,8 @@ de la guía, elaborado en sesión conjunta **antes** de ejecutar cualquier prueb
 
 | Archivo | Contenido |
 |---------|-----------|
-| [`dfd-lab3.png`](dfd-lab3.png) | Diagrama de flujo de datos con las tres fronteras de confianza |
+| [`DFD_LAB03.png`](DFD_LAB03.png) | **Diagrama de flujo de datos del equipo** (draw.io) con las tres fronteras de confianza |
+| [`dfd-lab3.png`](dfd-lab3.png) | Versión alterna del DFD (generada por script, mismo contenido) |
 | [`dfd-lab3.svg`](dfd-lab3.svg) | Fuente editable del diagrama (versionable, se rinde a PNG) |
 | [`stride.md`](stride.md) | Fronteras, elementos, flujos, tabla STRIDE y las once fichas de hipótesis |
 
