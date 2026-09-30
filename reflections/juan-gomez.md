@@ -2,29 +2,27 @@
 
 **Rol en el Laboratorio 3:** 🔴 Red Team
 **Grupo:** G03+G04 · **Temática:** CrowdStrike Incident Hub
-**Fecha:** _(completar)_
+**Fecha:** 2026-09-30
 
-> ⚠️ BORRADOR para personalizar. Reescríbelo con tus propias palabras: la guía
-> (§8) califica la validación humana, no el texto generado. Borra este aviso y
-> ajusta el conteo a ≤250 palabras.
+Como Red Team lo que más me marcó fue darme cuenta de cuánta información puede
+obtener un atacante sin explotar una sola vulnerabilidad, solo leyendo lo que el
+servicio entrega. Con `nmap` y `curl` confirmé la versión exacta de Nginx y de la
+API, descargué `/.git/config` y `/.env`, y leí el entorno del proceso en
+`/api/v1/debug`. Me sorprendió que el listado de alertas devolviera `cmdline`,
+`user_name` y `sha256`: datos que un analista no necesita para hacer triage y que
+amplían la superficie de exposición sin razón.
 
-Como Red Team confirmé, sin explotar nada, cuánto revela un servicio HTTP sin
-autenticación. Con `nmap -sV` y `curl` identifiqué la versión de Nginx y de la
-API (`evidence/red/curl_headers_api.txt`), descargué `/.git/config` y `/.env`
-(200 OK) y leí el entorno del proceso en `/api/v1/debug`. Lo que más me
-sorprendió fue que el simple listado de alertas entregaba `cmdline`, `user_name`
-y `sha256`: información sensible que ninguna vista de triage necesita. También
-comprobé que un `POST /assign` cambia el estado de una alerta sin pedir
-credenciales, y que enviando `X-Forwarded-For: 203.0.113.99` la auditoría de la
-aplicación registraba una IP falsa. El control que aplicamos y que reduce
-exposición pero no resuelve el problema de fondo fue el hardening de cabeceras y
-`server_tokens off`: el tráfico sigue viajando en claro, así que la
-confidencialidad depende todavía de pasar a HTTPS en el Lab 4. Usé IA para
-ordenar la narrativa de los hallazgos, pero descarté dos afirmaciones suyas —un
-supuesto CVE y un webshell— porque no pude comprobarlas contra ninguna evidencia.
-La amenaza que priorizaría para el Lab 4 es la ausencia de identidad
-(Spoofing/Elevation of Privilege): mientras cualquiera pueda cerrar un incidente
-sin autenticarse, el resto de controles es secundario.
+Entendí que el control que aplicamos después —quitar el banner de versión y
+endurecer cabeceras— reduce pistas para el atacante, pero no resuelve el problema
+de fondo: mientras el transporte siga siendo HTTP, todo viaja en claro. Eso solo
+se cierra con HTTPS, que implementamos en la fase de mitigación.
+
+Usé IA para ordenar la narrativa de los hallazgos, pero tuve que descartar dos de
+sus afirmaciones —un supuesto CVE de Nginx y un posible webshell— porque no pude
+comprobarlas contra ningún comando ni log; fueron alucinaciones. Para el
+Laboratorio 4 priorizaría la ausencia de identidad (Spoofing y escritura sin
+autenticación): mientras cualquiera pueda cerrar un incidente sin identificarse,
+los demás controles quedan en segundo plano.
 
 ---
-**Conteo de palabras:** _(completar — máximo 250)_
+**Conteo de palabras:** 218 (máximo 250)
