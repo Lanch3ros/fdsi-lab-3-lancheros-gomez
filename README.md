@@ -54,6 +54,7 @@ riesgos de esa configuración.
 | El registro de riesgos | [`risk/register.md`](risk/register.md) |
 | El checklist de cierre y entregables | [`CHECKLIST.md`](CHECKLIST.md) |
 | Cómo probar todo paso a paso | [`PRUEBAS.md`](PRUEBAS.md) |
+| Cómo presentar el demo en vivo | [`DEMO.md`](DEMO.md) |
 
 ---
 
