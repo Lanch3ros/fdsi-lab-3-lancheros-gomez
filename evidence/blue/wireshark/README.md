@@ -11,8 +11,8 @@ Demostración visual del hallazgo **H1** (contenido en claro por HTTP) y de su
 | `tls-mitigado.pcap` | Captura **después** (HTTPS): mismo flujo, ya cifrado |
 | `follow-http-stream-baseline.txt` | Extracto legible del "Follow HTTP Stream" (antes) |
 | `tls-validacion.txt` | Comparación objetiva antes/después |
-| `01-packet-list.png` | *(captura de pantalla)* lista de paquetes con `GET /api/v1/alerts` |
-| `02-follow-http-stream.png` | *(captura de pantalla)* el JSON en claro (Follow HTTP Stream) |
+| `01-packet-list.png` | lista de paquetes con `GET /api/v1/alerts` |
+| `02-follow-http-stream.png` | el JSON en claro (Follow HTTP Stream) |
 | `03-tls-cifrado.png` | *(captura de pantalla, opcional)* tráfico TLS cifrado tras la mitigación |
 
 ## ANTES — tráfico plano por HTTP (hallazgo H1)
@@ -20,9 +20,8 @@ Demostración visual del hallazgo **H1** (contenido en claro por HTTP) y de su
 Al seguir el flujo HTTP de `GET /api/v1/alerts/ldt:mock:0001` en Wireshark, la
 respuesta del servidor se lee **en texto plano**, incluyendo campos sensibles:
 
-![Lista de paquetes en Wireshark](01-packet-list.png)
-
-![Follow HTTP Stream con el JSON en claro](02-follow-http-stream.png)
+![alt text](image.png)
+![alt text](image-1.png)
 
 Se observan sin cifrado: `user_name: svc_lab_a`, `cmdline: /usr/bin/mock-dump
 --target lsass`, `hostname: WEB-LAB-01`, `sha256`, técnica `OS Credential
